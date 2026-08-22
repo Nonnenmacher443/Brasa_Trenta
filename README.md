@@ -47,7 +47,7 @@ Projeto desenvolvido por:
 
 - **Leonardo Nonnenmacher**
 - **Maria Eduarda de Figueiredo Rodrigues**
-- **Giovani Bugalho**
+- **Adrian Gabriel Dias**
 
 ## Sobre o Projeto
 
