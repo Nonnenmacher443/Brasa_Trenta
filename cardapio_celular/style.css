@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("/cardapio_celular/imagens/fundo.jpg");
+    background-repeat: repeat;
+    color: #111;
+}
+
+.pagina {
+    width: min(100%, 1131px);
+    margin: 0 auto;
+    padding: 34px 48px 55px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Cabeçalho */
+.cabecalho {
+    height: 340px;
+    background: #fff;
+    border-radius: 46px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 18px 48px;
+}
+
+.logo {
+    width: 285px;
+    height: 285px;
+    object-fit: contain;
+}
+
+.informacoes {
+    margin-left: 35px;
+    margin-top: -5px;
+}
+
+.informacoes h1 {
+    font-size: clamp(25px, 3vw, 31px);
+    line-height: 1.15;
+    font-weight: 600;
+    white-space: nowrap;
+    margin-bottom: 23px;
+}
+
+.informacoes p {
+    font-size: clamp(21px, 2.5vw, 27px);
+    white-space: nowrap;
+}
+
+.carrinho {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    right: 34px;
+    top: 26px;
+}
+
+.decorativa-topo {
+    position: absolute;
+    width: 190px;
+    height: 150px;
+    object-fit: contain;
+    right: 20px;
+    bottom: 3px;
+}
+
+/* Título */
+.titulo-categoria {
+    display: inline-block;
+    background: #fff;
+    border-radius: 30px;
+    padding: 8px 20px;
+    margin: 18px 0 20px 18px;
+}
+
+.titulo-categoria h2 {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+/* Cards */
+.lista-pizzas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.pizza-card {
+    height: 226px;
+    width: 100%;
+    background: #fff;
+    border-radius: 46px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 15px 38px;
+    cursor: pointer;
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.pizza-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+}
+
+.imagem-pizza {
+    width: 200px;
+    height: 195px;
+    object-fit: cover;
+    border-radius: 20px;
+    flex-shrink: 0;
+}
+
+.descricao-pizza {
+    align-self: flex-start;
+    margin: 27px 0 0 27px;
+}
+
+.descricao-pizza h3 {
+    font-size: 34px;
+    line-height: 1.05;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.descricao-pizza p {
+    font-size: 26px;
+}
+
+.preco {
+    position: absolute;
+    top: 27px;
+    right: 36px;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.decorativa-baixo {
+    position: absolute;
+    width: 220px;
+    right: -10px;
+    bottom: -5px;
+    pointer-events: none;
+}
+
+/* Celular */
+@media (max-width: 720px) {
+    .pagina {
+        padding: 16px;
+    }
+
+    .cabecalho {
+        height: 230px;
+        border-radius: 30px;
+        padding: 12px 18px;
+    }
+
+    .logo {
+        width: 150px;
+        height: 190px;
+    }
+
+    .informacoes {
+        margin-left: 10px;
+        padding-right: 15px;
+    }
+
+    .informacoes h1 {
+        white-space: normal;
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+
+    .informacoes p {
+        white-space: normal;
+        font-size: 15px;
+    }
+
+    .carrinho {
+        width: 38px;
+        height: 38px;
+        right: 18px;
+        top: 18px;
+    }
+
+    .decorativa-topo {
+        display: none;
+    }
+
+    .titulo-categoria {
+        margin-left: 5px;
+        padding: 7px 15px;
+    }
+
+    .titulo-categoria h2 {
+        font-size: 20px;
+    }
+
+    .pizza-card {
+        height: 145px;
+        border-radius: 30px;
+        padding: 10px 16px;
+    }
+
+    .imagem-pizza {
+        width: 120px;
+        height: 125px;
+        border-radius: 15px;
+    }
+
+    .descricao-pizza {
+        margin: 18px 0 0 15px;
+    }
+
+    .descricao-pizza h3 {
+        font-size: 20px;
+    }
+
+    .descricao-pizza p {
+        font-size: 15px;
+    }
+
+    .preco {
+        font-size: 17px;
+        right: 18px;
+        top: 18px;
+    }
+
+    .decorativa-baixo {
+        display: none;
+    }
+}
