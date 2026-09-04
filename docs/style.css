@@ -1,246 +1,342 @@
+/* =========================================================
+   CONFIGURAÇÕES GERAIS
+   Variáveis, reset e estilos básicos do site.
+   ========================================================= */
+
+/* Cores e sombra usadas no site. */
+:root {
+    --marrom: #6b4027;
+    --marrom-escuro: #3b2519;
+    --creme: #f5ecdf;
+    --papel: #fffdf9;
+    --verde: #496b4d;
+    --sombra: 0 16px 45px rgba(48,28,17,.12);
+}
+
+/* Remove margens e espaçamentos padrão do navegador. */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-html, body {
-    min-height: 100%;
+/* Faz a rolagem para as âncoras ficar suave. */
+html {
+    scroll-behavior: smooth;
 }
 
+/* Configura a aparência geral da página. */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-image: url("imagens/fundo_atualizado.jpg");
-    background-repeat: repeat;
-    color: #111;
+    min-height: 100vh;
+    font-family: Inter,Arial,Helvetica,sans-serif;
+    color: var(--marrom-escuro);
+    background: url("imagens/fundo_atualizado.jpg") repeat;
 }
 
+/* Mantém a fonte dos controles igual à fonte do site. */
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+
+/* =========================================================
+   PÁGINA E CABEÇALHO
+   Estrutura principal, logo, textos e botão do carrinho.
+   ========================================================= */
+
+/* Limita a largura do conteúdo e centraliza a página. */
 .pagina {
-    width: min(100%, 1131px);
-    margin: 0 auto;
-    padding: 34px 48px 55px;
-    position: relative;
-    overflow: hidden;
+    width: min(100% - 32px,1130px);
+    margin: auto;
+    padding: 32px 0 60px;
 }
 
-/* Cabeçalho */
+/* Organiza os elementos do cabeçalho na horizontal. */
 .cabecalho {
-    height: 340px;
-    background: #fff;
-    border-radius: 46px;
-    position: relative;
+    min-height: 310px;
+    background: rgba(255,253,249,.96);
+    border-radius: 42px;
     display: flex;
     align-items: center;
-    padding: 18px 48px;
+    gap: 34px;
+    padding: 24px 44px;
+    position: relative;
+    box-shadow: var(--sombra);
 }
 
+/* Define o espaço reservado para o bloco da logo. */
 .logo {
-    width: 285px;
-    height: 285px;
-    object-fit: contain;
-}
-
-.informacoes {
-    margin-left: 35px;
-    margin-top: -5px;
-}
-
-.informacoes h1 {
-    font-size: clamp(25px, 3vw, 31px);
-    line-height: 1.15;
-    font-weight: 600;
-    white-space: nowrap;
-    margin-bottom: 23px;
-}
-
-.informacoes p {
-    font-size: clamp(21px, 2.5vw, 27px);
-    white-space: nowrap;
-}
-
-.carrinho {
-    position: absolute;
-    width: 56px;
-    height: 56px;
-    object-fit: contain;
-    right: 34px;
-    top: 26px;
-    color: #5a3921;;
-}
-
-.decorativa-topo {
-    position: absolute;
-    width: 190px;
-    height: 150px;
-    object-fit: contain;
-    right: 20px;
-    bottom: 3px;
-}
-
-/* Título */
-.titulo-categoria {
-    display: inline-block;
-    background: #fff;
-    border-radius: 30px;
-    padding: 8px 20px;
-    margin: 18px 0 20px 18px;
-}
-
-.titulo-categoria h2 {
-    font-size: 26px;
-    font-weight: 600;
-}
-
-/* Cards */
-.lista-pizzas {
+    width: 260px;
+    height: 260px;
+    flex: 0 0 260px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-}
-
-.pizza-card {
-    height: 226px;
-    width: 100%;
-    background: #fff;
-    border-radius: 46px;
-    position: relative;
-    display: flex;
     align-items: center;
-    padding: 15px 38px;
-    cursor: pointer;
-    transition: transform .15s ease, box-shadow .15s ease;
+    justify-content: center;
 }
 
+/* Define o tamanho e o comportamento da imagem da logo. */
+.logo-img {
+    width: 235px;
+    height: 235px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Título principal do cabeçalho. */
+.informacoes h1 {
+    font-family: Georgia,serif;
+    font-size: clamp(32px,4vw,50px);
+    line-height: 1;
+    margin: 10px 0 16px;
+}
+
+/* Texto abaixo do título. */
+.informacoes p {
+    font-size: clamp(17px,2vw,23px);
+    line-height: 1.45;
+    max-width: 600px;
+}
+
+/* Pequeno texto acima do título. */
+.etiqueta {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--marrom);
+}
+
+/* Botão do carrinho no canto superior direito do cabeçalho. */
+.botao-carrinho {
+    position: absolute;
+    right: 30px;
+    top: 28px;
+    width: 58px;
+    height: 58px;
+    border: 0;
+    border-radius: 18px;
+    background: var(--marrom);
+    color: white;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(59,37,25,.2);
+}
+
+/* Define o tamanho e o traçado do ícone SVG do carrinho. */
+.botao-carrinho svg {
+    width: 30px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+}
+
+/* Bolinha com a quantidade de itens do carrinho. */
+.botao-carrinho span {
+    position: absolute;
+    right: -7px;
+    top: -7px;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 6px;
+    border-radius: 99px;
+    background: #fff;
+    color: var(--marrom);
+    border: 2px solid var(--marrom);
+    font-size: 12px;
+    font-weight: 800;
+    display: grid;
+    place-items: center;
+}
+
+
+/* =========================================================
+   CARDÁPIO
+   Títulos das categorias e cards das pizzas.
+   ========================================================= */
+
+/* Título de cada categoria do cardápio. */
+.titulo-categoria {
+    display: inline-block;
+    background: var(--papel);
+    border-radius: 18px;
+    padding: 9px 20px;
+    margin: 18px 0 14px;
+    box-shadow: 0 8px 30px rgba(48,28,17,.07);
+}
+
+/* Texto do título da categoria. */
+.titulo-categoria h2 {
+    font-family: Georgia,serif;
+    font-size: 28px;
+}
+
+/* Organiza os cards um abaixo do outro. */
+.lista-pizzas {
+    display: grid;
+    gap: 14px;
+}
+
+/* Estrutura de cada produto. */
+.pizza-card {
+    min-height: 190px;
+    background: rgba(255,253,249,.97);
+    border-radius: 32px;
+    padding: 18px 24px;
+    display: grid;
+    grid-template-columns: 160px 1fr auto;
+    gap: 24px;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(48,28,17,.08);
+    transition: .18s ease;
+}
+
+/* Pequeno efeito quando o mouse passa pelo card. */
 .pizza-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+    box-shadow: var(--sombra);
 }
 
+/* Define o tamanho das imagens dos produtos. */
 .imagem-pizza {
-    width: 200px;
-    height: 195px;
+    width: 160px;
+    height: 150px;
     object-fit: cover;
-    border-radius: 20px;
-    flex-shrink: 0;
+    border-radius: 22px;
 }
 
-.descricao-pizza {
-    align-self: flex-start;
-    margin: 27px 0 0 27px;
-}
-
+/* Nome da pizza. */
 .descricao-pizza h3 {
-    font-size: 34px;
-    line-height: 1.05;
-    font-weight: 600;
-    margin-bottom: 8px;
+    font-family: Georgia,serif;
+    font-size: 30px;
+    margin-bottom: 9px;
 }
 
+/* Descrição da pizza. */
 .descricao-pizza p {
-    font-size: 26px;
+    font-size: 17px;
+    line-height: 1.5;
+    color: #6b5b51;
 }
 
+/* Preço mostrado no card. */
 .preco {
-    position: absolute;
-    top: 27px;
-    right: 36px;
-    font-size: 28px;
-    font-weight: 500;
+    font-size: 23px;
 }
 
-.decorativa-baixo {
-    position: absolute;
-    width: 220px;
-    right: -10px;
-    bottom: -5px;
-    pointer-events: none;
-}
 
-/* Celular */
-@media (max-width: 720px) {
+/* =========================================================
+   RESPONSIVIDADE
+   Ajustes somente para telas pequenas/celulares.
+   ========================================================= */
+
+@media(max-width:760px) {
+
+    /* Reduz as margens da página no celular. */
     .pagina {
-        padding: 16px;
+        width: min(100% - 20px,1130px);
+        padding: 10px 0 30px;
     }
 
+    /* Diminui o cabeçalho para caber melhor na tela. */
     .cabecalho {
-        height: 230px;
-        border-radius: 30px;
-        padding: 12px 18px;
+        min-height: 210px;
+        border-radius: 28px;
+        padding: 18px;
+        gap: 12px;
     }
 
+    /* Reduz o espaço reservado para a logo. */
     .logo {
-        width: 150px;
-        height: 190px;
+        width: 115px;
+        height: 135px;
+        flex: 0 0 115px;
     }
 
+    /*
+       Esta regra é importante no celular:
+       a imagem precisa diminuir junto com o bloco .logo.
+       Antes, ela continuava com 235px e acabava saindo do cabeçalho.
+    */
+    .logo-img {
+        width: 105px;
+        height: 105px;
+    }
+
+    /* Ajusta o tamanho do texto pequeno abaixo da logo. */
+    .logo p {
+        font-size: 11px;
+    }
+
+    /* Permite que a área de informações use somente o espaço disponível. */
     .informacoes {
-        margin-left: 10px;
-        padding-right: 15px;
+        min-width: 0;
+        padding-right: 42px;
     }
 
+    /* Diminui o título principal no celular. */
     .informacoes h1 {
-        white-space: normal;
-        font-size: 17px;
-        margin-bottom: 10px;
+        font-size: 27px;
     }
 
+    /* Diminui o texto de descrição no celular. */
     .informacoes p {
-        white-space: normal;
-        font-size: 15px;
+        font-size: 14px;
+        padding-right: 0;
     }
 
-    .carrinho {
-        width: 28px;
-        height: 28px;
-        right: 18px;
-        top: 18px;
-        color: #5a3921;
+    /* Reduz o botão do carrinho no celular. */
+    .botao-carrinho {
+        width: 45px;
+        height: 45px;
+        right: 15px;
+        top: 15px;
+        border-radius: 14px;
     }
 
-    .decorativa-topo {
-        display: none;
+    /* Reduz o ícone do carrinho no celular. */
+    .botao-carrinho svg {
+        width: 24px;
     }
 
-    .titulo-categoria {
-        margin-left: 5px;
-        padding: 7px 15px;
-    }
-
+    /* Diminui o espaço dos títulos das categorias. */
     .titulo-categoria h2 {
-        font-size: 20px;
+        font-size: 23px;
     }
 
+    /* Coloca a imagem e as informações em duas colunas no celular. */
     .pizza-card {
-        height: 145px;
-        border-radius: 30px;
-        padding: 10px 16px;
+        min-height: 130px;
+        border-radius: 24px;
+        padding: 12px;
+        grid-template-columns: 105px 1fr;
+        gap: 13px;
     }
 
+    /* Reduz as imagens das pizzas no celular. */
     .imagem-pizza {
-        width: 120px;
-        height: 125px;
-        border-radius: 15px;
+        width: 105px;
+        height: 105px;
+        border-radius: 17px;
     }
 
-    .descricao-pizza {
-        margin: 18px 0 0 15px;
-    }
-
+    /* Reduz o nome do produto no celular. */
     .descricao-pizza h3 {
-        font-size: 20px;
+        font-size: 21px;
+        padding-right: 5px;
     }
 
+    /* Reduz a descrição no celular. */
     .descricao-pizza p {
-        font-size: 15px;
+        font-size: 13px;
     }
 
+    /* Ajusta o tamanho do preço no celular. */
     .preco {
         font-size: 17px;
-        right: 18px;
-        top: 18px;
-    }
-
-    .decorativa-baixo {
-        display: none;
     }
 }
